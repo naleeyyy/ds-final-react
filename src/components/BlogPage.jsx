@@ -1,6 +1,13 @@
 import AnimatedPage from "./AnimatedPage"
+import { blogPages } from "../data"
+import { useParams } from "react-router-dom"
 
 const BlogPage = (props) => {
+    
+    const params = useParams()
+    const blogPage = blogPages.find((el) => el.id == params.id)
+    console.log(blogPage)
+
     return (
         <AnimatedPage>
             <main style={{
@@ -12,8 +19,8 @@ const BlogPage = (props) => {
                 <div className="flex flex-center" style={{
                     textAlign: 'center'
                 }}>
-                    <h1 className="gradient-text">{props.title}</h1>
-                    <p>{props.text}</p>
+                    <h1 className="gradient-text">{blogPage.title}</h1>
+                    <p>{blogPage.text}</p>
                 </div>
             </main>
         </AnimatedPage>

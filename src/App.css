@@ -41,6 +41,20 @@ main {
   gap: 2rem;
 }
 
+input, textarea {
+  width: 20%;
+  background: transparent;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: .5rem .25rem;
+  color: white;
+  outline: none;
+}
+
+label {
+  font-size: 2rem;
+}
+
 .menu-icon {
   position: fixed;
   top: 4%;
@@ -232,6 +246,9 @@ h2 {
     top: 5%;
     left: 5%;
   }
+  input, textarea {
+    width: 50%;
+  }
 }
 
 @media screen and (max-width: 800px) {
@@ -239,6 +256,9 @@ h2 {
     width: 90%;
     left: 5%;
     right: 5%;
+  }
+  input, textarea {
+    width: 70%;
   }
 }
 
@@ -255,6 +275,9 @@ h2 {
     width: 10%;
     top: 5%;
     left: 5%;
+  }
+  input, textarea {
+    width: 100%;
   }
 }
 

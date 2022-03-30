@@ -23,7 +23,7 @@ const Main = () => {
                         title='Title'
                         text='Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo facere sunt necessitatibus ullam placeat praesentium!'
                         buttonText='Click me'
-                        url='/blogPage'
+                        url='/blogPage/1'
                     />
                     {/* use this card component */}
                     <Card 
@@ -31,14 +31,14 @@ const Main = () => {
                         title='Title'
                         text='Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo facere sunt necessitatibus ullam placeat praesentium!'
                         buttonText='Click me'
-                        url='/blogPage'
+                        url='/blogPage/2'
                     />
                     <Card 
                         alignment='right' 
                         title='Title'
                         text='Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo facere sunt necessitatibus ullam placeat praesentium!'
                         buttonText='Click me'
-                        url='/blogPage'
+                        url='/blogPage/3'
                     />
                 </main>
         </AnimatedPage>
