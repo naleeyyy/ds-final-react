@@ -1,38 +1,264 @@
-.App {
-  text-align: center;
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#root {
+    min-height: 100%;
+    width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#renderer {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background-color: black;
+  color: white;
+  font-family: sans-serif;
+}
+
+main {
+  position: absolute;
+  top: 5%;
+  bottom: 5%;
+  left: 10%;
+  right: 10%;
+  min-width: 80%;
+  height: 90%;
+  /* background: rgba(255, 0, 0, 0.1); */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2rem;
+}
+
+.menu-icon {
+  position: fixed;
+  top: 4%;
+  left: 2%;
+  width: 4%;
+  z-index: 3;
+}
+
+.menu-icon:hover {
+  cursor: pointer;
+}
+
+.menu-icon img {
+  width: 100%;
+  height: 100%;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+
+.sidenav {
+  height: 100%; 
+  width: 0; 
+  position: fixed; 
+  z-index: 4; 
+  top: 0; 
+  left: 0;
+  background-color: #111; 
+  overflow-x: hidden; 
+  padding-top: 60px; 
+  transition: 0.5s;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+}
+
+.sidenav-footer {
+  width: 100%;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  transition: opacity 0.5s ease-in-out;
+  color: #818181;
 }
 
-.App-link {
-  color: #61dafb;
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+h2 {
+  padding: 0;
+  margin: 0;
+  margin-top: 1rem;
+}
+
+.gradient-text {
+  background-color: #f3ec78;
+  background-image: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+  background-size: 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  flex-direction: column;
+}
+
+.hidden {
+  display: none;
+}
+
+.header {
+  justify-content: space-evenly;
+  padding: 2rem 2rem 2rem 1rem;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  /* background: rgba(255, 0, 0, 0.1); */
+  border-radius: 1rem;
+  padding: 2rem;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.027);
+  backdrop-filter: blur(5px);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 10px 10px 2px rgba(255, 255, 255, 0.041);
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.button-left {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.button-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button {
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+  border-radius: 5px;
+  color: black;
+}
+
+.button {
+  text-decoration: none;
+  padding: 0.75rem 2rem;
+}
+
+@media screen and (min-width: 1000px) {
+  h1 {
+    font-size: 4rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  h2 {
+    font-size: 2.5rem;
   }
+
+  p {
+    font-size: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  h2 {
+    font-size: 2rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  p {
+    font-size: 1.25rem;
+  }
+  .menu-icon {
+    top: 5%;
+    left: 5%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  main {
+    width: 90%;
+    left: 5%;
+    right: 5%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  main {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+  }
+
+  h2 {
+    margin-top: 0;
+  }
+  .menu-icon {
+    width: 10%;
+    top: 5%;
+    left: 5%;
+  }
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
 }
