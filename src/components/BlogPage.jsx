@@ -6,7 +6,6 @@ const BlogPage = (props) => {
     
     const params = useParams()
     const blogPage = blogPages.find((el) => el.id == params.id)
-    console.log(blogPage)
 
     return (
         <AnimatedPage>

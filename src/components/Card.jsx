@@ -2,16 +2,6 @@ import { Link } from "react-router-dom"
 import AnimatedPage from "./AnimatedPage"
 
 const Card = (props) => {
-
-    const styles = () => {
-        if (props.alignment === 'right') {
-            return 'card flex-center text-right'
-        } 
-        else {
-            return 'card flex-center text-left'
-        }
-    }
-
     return (
         <AnimatedPage>
             <div className={props.alignment === 'right' ? 'card flex-center text-right' : 'card flex-center text-left'}>

@@ -25,7 +25,6 @@ const Main = () => {
                         buttonText='Click me'
                         url='/blogPage/1'
                     />
-                    {/* use this card component */}
                     <Card 
                         alignment='left' 
                         title='Title'
