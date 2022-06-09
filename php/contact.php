@@ -1,28 +1,20 @@
-<?php
-    // header("Location: query.php");
-    header('Access-Control-Allow-Origin: *');
-    
+<?php  
     include_once('config.php');
 
-    if(isset($_POST['submit'])) {
-        $name = $_POST["name"];
-        $email = $_POST['email'];
-        $text = $_POST['text'];
-    }
-
+    $name = $_POST["name"];
+    $email = $_POST['email'];
+    $text = $_POST['text'];
+    
     $sql = "INSERT IGNORE INTO contact (name, email, text) VALUES (:name, :email, :text);";
 
-    $newUser = $con->prepare($sql);
+    $prep = $con->prepare($sql);
 
-    $newUser->bindParam(':name', $text);
-    $newUser->bindParam(':email', $email);
-    $newUser->bindParam(':text', $text);
+    $prep->bindParam(':name', $text);
+    $prep->bindParam(':email', $email);
+    $prep->bindParam(':text', $text);
 
-    $newUser->execute([
-        ':name' => $name,
-        ':email' => $email,
-        ':text' => $text,
-    ]);
+    $prep->execute();
 
-    // echo "Sucess";
+    error_log("Sucess, added contact message to database.");
+    echo 'Sucess';
 ?>

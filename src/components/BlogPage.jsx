@@ -1,11 +1,22 @@
 import AnimatedPage from "./AnimatedPage"
 import { blogPages } from "../data"
 import { useParams } from "react-router-dom"
+import { useEffect, useState } from "react"
 
 const BlogPage = (props) => {
     
     const params = useParams()
-    const blogPage = blogPages.find((el) => el.id == params.id)
+    const [blogPage, setBlogPage] = useState({})
+
+    useEffect(() => {
+        fetch("http://localhost:8000/getPages.php")
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                const page = data[params.id - 1]
+                setBlogPage(page)
+            })
+    }, [])
 
     return (
         <AnimatedPage>
