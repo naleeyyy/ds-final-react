@@ -1,6 +1,26 @@
+import { useState } from "react"
 import AnimatedPage from "./AnimatedPage"
+import $ from 'jquery'
 
 const Contact = () => {
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [text, setText] = useState("")
+    const [result, setResult] = useState("")
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const form = $(e.target)
+        $.ajax({
+            type: "POST",
+            url: form.attr("action"),
+            data: form.serialize(),
+            success(data) {
+                setResult(data)
+            }
+        })
+    }
+    
     return (
         <AnimatedPage>
             <main style={{
@@ -9,20 +29,22 @@ const Contact = () => {
                 backdropFilter: 'drop-shadow(5px)',
                 borderRadius: '0.5rem',
             }}>
-                <form action="" className="flex" style={{
+                <form onSubmit={(e) => handleSubmit(e)} className="flex" action="http://localhost:8000/contact.php" style={{
                     flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'space-evenly',
                     boxShadow: '0px 0px 5px -1px white',
-                    borderRadius: '1rem'
+                    borderRadius: '1rem',
+                    backdropFilter: "brightness(30%)",
+                    fontSize: "20px"
                 }}>
                     <h1 className="gradient-text">hello</h1>
-                    <label htmlFor="" className="gradient-text">Name</label>
-                    <input type="text" name="" id="" />
-                    <label htmlFor="" className="gradient-text">Email</label>
-                    <input type="email" name="" id="" />
-                    <label htmlFor="" className="gradient-text">Text</label>
-                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <label htmlFor="name" className="gradient-text">Name</label>
+                    <input type="text" name="name" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+                    <label htmlFor="email" className="gradient-text">Email</label>
+                    <input type="email" name="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    <label htmlFor="text" className="gradient-text">Text</label>
+                    <textarea name="text" id="text" cols="30" rows="10" value={text} onChange={(e) => setText(e.target.value)}></textarea>
                     <button type="submit" className="button" style={{
                         outline: 'none',
                         border: 'none',
