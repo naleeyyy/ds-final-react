@@ -40,7 +40,7 @@ const Menu = () => {
                     </Link>
                 </div>
                 <div className="sidenav-footer">
-                    <p>Copyright 2022</p>
+                    <p>Copyright K.A 2022</p>
                 </div>
             </div>
         </>

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Typewriter from 'typewriter-effect'
 import AnimatedPage from './AnimatedPage'
 import Card from './Card'
+import Loading from './Loading'
 
 const Main = () => {
     
@@ -27,8 +28,6 @@ const Main = () => {
             })
     }, [])
     
-    console.log(pages)
-
     if (!loading) {
         return (
             <AnimatedPage>
@@ -72,9 +71,7 @@ const Main = () => {
     }
     else {
         return (
-            <h1>
-                Loading
-            </h1>
+            <Loading />
         )
     }
 }

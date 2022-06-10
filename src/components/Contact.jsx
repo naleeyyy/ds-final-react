@@ -26,6 +26,7 @@ const Contact = () => {
             }
         })
     }
+    
     if (result){
         return (
             <AnimatedPage>

@@ -201,6 +201,13 @@ h2 {
   justify-content: flex-end;
 }
 
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .button {
   background: radial-gradient(
     circle,

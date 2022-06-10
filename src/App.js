@@ -7,6 +7,8 @@ import Menu from './components/Menu';
 import BlogPage from './components/BlogPage';
 import About from './components/About';
 import Contact from './components/Contact';
+import Admin from './components/Admin'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const Torus = (props) => {
   
@@ -42,6 +44,7 @@ function App() {
           <Route path='/blogPage/:id' element={<BlogPage />}/>
           <Route path='/about' element={<About />}/>
           <Route path='/contact' element={<Contact />} />
+          <Route path='/admin' element={<Admin />} />
         </Routes>
     </>
   );
