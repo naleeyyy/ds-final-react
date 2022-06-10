@@ -9,7 +9,7 @@
 
     $prep = $con->prepare($sql);
 
-    $prep->bindParam(':name', $text);
+    $prep->bindParam(':name', $name);
     $prep->bindParam(':email', $email);
     $prep->bindParam(':text', $text);
 

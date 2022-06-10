@@ -1,5 +1,4 @@
 import AnimatedPage from "./AnimatedPage"
-import { blogPages } from "../data"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 
