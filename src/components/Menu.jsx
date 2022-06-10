@@ -38,6 +38,9 @@ const Menu = () => {
                     <Link to='/contact'>
                         Contact
                     </Link>
+                    <Link to='/pages'>
+                        Pages
+                    </Link>
                 </div>
                 <div className="sidenav-footer">
                     <p>Copyright K.A 2022</p>

@@ -4,7 +4,7 @@ import AnimatedPage from "./AnimatedPage"
 const Card = (props) => {
     return (
         <AnimatedPage>
-            <div className={props.alignment === 'right' ? 'card flex-center text-right' : 'card flex-center text-left'}>
+            <div className={props.alignment === 'right' ? 'card flex-center text-right' : 'card flex-center text-left'} style={props.style}>
                 <h2>{props.title}</h2>
                 <p>{props.text}</p>
                 <div className={props.alignment === 'right' ? 'button-left' : 'button-right'}>
