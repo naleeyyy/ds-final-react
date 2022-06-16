@@ -6,7 +6,6 @@ import { useNavigate, useParams } from "react-router-dom"
 
 const Edit = () => {
     
-    const [page, setPage] = useState({})
     const [loading, setLoading] = useState(true)
     const [title, setTitle] = useState("")
     const [text, setText] = useState("")
@@ -22,14 +21,13 @@ const Edit = () => {
             data: `ID=${params.id}`,
             success(data) {
                 let page = JSON.parse(data)[0]
-                setPage(page)
                 setTitle(page.title)
                 setText(page.text)
                 setId(page.ID)
                 setLoading(false)
             }
         })
-    }, [])
+    }, [params.id])
 
     const handleSave = (e) => {
         e.preventDefault()

@@ -49,21 +49,21 @@ const Main = () => {
                             title={pages[pages.length - 1].title}
                             text={pages[pages.length - 1].text}
                             buttonText='Click me'
-                            url={`/blogPage/${pages.length}`}
+                            url={`/blogPage/${pages[pages.length - 1].ID}`}
                         />
                         <Card 
                             alignment='left' 
                             title={pages[pages.length - 2].title}
                             text={pages[pages.length - 2].text}
                             buttonText='Click me'
-                            url={`/blogPage/${pages.length - 1}`}
+                            url={`/blogPage/${pages[pages.length - 2].ID}`}
                         />
                         <Card 
                             alignment='right' 
                             title={pages[pages.length - 3].title}
                             text={pages[pages.length - 3].text}
                             buttonText='Click me'
-                            url={`/blogPage/${pages.length - 2}`}
+                            url={`/blogPage/${pages[pages.length - 3].ID}`}
                         />
                     </main>
             </AnimatedPage>

@@ -1,39 +1,53 @@
 import AnimatedPage from "./AnimatedPage"
+import Loading from './Loading'
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
+import $ from 'jquery'
 
 const BlogPage = (props) => {
     
     const params = useParams()
-    const [blogPage, setBlogPage] = useState({})
-
+    const [loading, setLoading] = useState(true)
+    const [title, setTitle] = useState("")
+    const [text, setText] = useState("")
+    
     useEffect(() => {
-        fetch("http://localhost:8000/getPages.php")
-            .then(response => response.json())
-            .then(data => {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8000/getPage.php",
+            data: `ID=${params.id}`,
+            success(data) {
+                let page = JSON.parse(data)[0]
                 console.log(data)
-                const page = data[params.id - 1]
-                setBlogPage(page)
-            })
-    }, [])
+                setTitle(page.title)
+                setText(page.text)
+                setLoading(false)
+            }
+        })
+    }, [params.id])
 
-    return (
-        <AnimatedPage>
-            <main style={{
-                gridTemplateColumns: '1fr',
-                gridTemplateRows: '1fr',
-                backdropFilter: 'drop-shadow(5px)',
-                borderRadius: '0.5rem',
-            }}>
-                <div className="flex flex-center" style={{
-                    textAlign: 'center'
+    if (!loading) {
+        return (
+            <AnimatedPage>
+                <main style={{
+                    gridTemplateColumns: '1fr',
+                    gridTemplateRows: '1fr',
+                    backdropFilter: 'drop-shadow(5px)',
+                    borderRadius: '0.5rem',
                 }}>
-                    <h1 className="gradient-text">{blogPage.title}</h1>
-                    <p>{blogPage.text}</p>
-                </div>
-            </main>
-        </AnimatedPage>
-    )
+                    <div className="flex flex-center" style={{
+                        textAlign: 'center'
+                    }}>
+                        <h1 className="gradient-text">{title}</h1>
+                        <p>{text}</p>
+                    </div>
+                </main>
+            </AnimatedPage>
+        )
+    }
+    else {
+        return <Loading />
+    }
 }
 
 export default BlogPage

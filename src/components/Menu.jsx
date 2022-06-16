@@ -1,5 +1,5 @@
 import hamburger from '../images/hamburger.png'
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { useLocation } from 'react-router-dom'
 
@@ -17,7 +17,6 @@ const Menu = () => {
     }
 
     const location = useLocation()
-    const navigate = useNavigate()
 
     useEffect(() => {
         if (menuState) {
@@ -34,7 +33,7 @@ const Menu = () => {
             </div>
 
             <div id="mySidenav" className="sidenav" style={menuState ? {width: '250px'} : null}>
-                <a className="closebtn" onClick={toggleMenu}>&times;</a>
+                <button className="closebtn" style={{background: 'transparent', outline: 'none', border: 'none', color: 'inherit', cursor: 'pointer'}} onClick={toggleMenu}>&times;</button>
                 <div>
                     <Link to='/'>
                         Home

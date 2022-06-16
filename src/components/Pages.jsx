@@ -2,7 +2,7 @@ import Loading from "./Loading"
 import { useState, useEffect } from "react"
 import Card from "./Card"
 import $ from 'jquery'
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const Pages = () => {
     
@@ -73,6 +73,7 @@ const Pages = () => {
                 transform: "translate(-50%, -10%)"
             }}
             >
+                {authenticated && <Link to='/admin' className="button" style={{marignBottom: "2rem"}}>Add page</Link>}
                 {pages.map(({title, text, ID}) => {
                     return <Card 
                         alignment='left' 
