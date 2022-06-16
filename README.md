@@ -16,4 +16,4 @@ npm start
 
 Sorry for bad css but the point of the project was php; planing on doing a django version of the same project
 
-### if you find a bug contact at kahmeti123@gmail.com
+### if you find a bug/need help contact at kahmeti123@gmail.com
