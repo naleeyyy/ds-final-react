@@ -47,7 +47,6 @@ const Pages = () => {
                     />
                 })}
             </div>
-            // <Card title={pages[0].title} text={pages[0].text} buttonText='Visit' url={`/blogPage/${pages[0].ID}`} />
         )
     }
     else {

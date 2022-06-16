@@ -1,15 +1,9 @@
 import './App.css';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import React, { useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import Main from './components/Main';
 import { Route, Routes } from 'react-router-dom';
-import Menu from './components/Menu';
-import BlogPage from './components/BlogPage';
-import About from './components/About';
-import Contact from './components/Contact';
-import Admin from './components/Admin'
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import Pages from './components/Pages';
+import { Menu, About, Contact, Admin, Pages, BlogPage, Main } from './components/exports'
 
 const Torus = (props) => {
   
