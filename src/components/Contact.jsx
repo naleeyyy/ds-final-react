@@ -20,6 +20,7 @@ const Contact = () => {
             data: form.serialize(),
             success(data) {
                 setResult(data)
+                console.log(form.serialize())
                 setTimeout(() => {
                     navigate('/')
                 }, 5000)

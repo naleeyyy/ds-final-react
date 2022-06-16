@@ -20,6 +20,7 @@ const Admin = () => {
             success(data) {
                 setAuthenticated(data === "true")
                 localStorage.setItem('authenticated', data === "true")
+                window.location.reload(false)
             }
         })
     }
@@ -36,6 +37,7 @@ const Admin = () => {
             }
         })
     }
+    
     useEffect(() => {
         setAuthenticated(localStorage.getItem('authenticated'))
     }, [])

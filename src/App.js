@@ -3,7 +3,7 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import React, { useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Route, Routes } from 'react-router-dom';
-import { Menu, About, Contact, Admin, Pages, BlogPage, Main } from './components/exports'
+import { Menu, About, Contact, Admin, Pages, BlogPage, Main, Edit } from './components/exports'
 
 const Torus = (props) => {
   
@@ -41,6 +41,7 @@ function App() {
           <Route path='/contact' element={<Contact />} />
           <Route path='/admin' element={<Admin />} />
           <Route path='/pages' element={<Pages />} />
+          <Route path='/edit/:id' element={<Edit />} />
         </Routes>
     </>
   );

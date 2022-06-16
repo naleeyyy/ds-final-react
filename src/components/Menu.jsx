@@ -1,16 +1,23 @@
 import hamburger from '../images/hamburger.png'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { useLocation } from 'react-router-dom'
 
 const Menu = () => {
     
+    const [authenticated, setAuthenticated] = useState(false)
+
+    useEffect(() => {
+        setAuthenticated(localStorage.getItem('authenticated'))
+    }, [])
+
     let [menuState, setMenuState] = useState(false)
     const toggleMenu = () => {
         setMenuState(!menuState)
     }
 
     const location = useLocation()
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (menuState) {
@@ -41,6 +48,17 @@ const Menu = () => {
                     <Link to='/pages'>
                         Pages
                     </Link>
+                    {authenticated && <button 
+                        className='button' style={{
+                            outline: 'none',
+                            border: 'none',
+                            cursor: 'pointer'
+                        }} 
+                        onClick={(e) => {
+                            localStorage.removeItem('authenticated')
+                            window.location.reload(false)
+                        }}>
+                        Sign Out</button>}
                 </div>
                 <div className="sidenav-footer">
                     <p>Copyright K.A 2022</p>

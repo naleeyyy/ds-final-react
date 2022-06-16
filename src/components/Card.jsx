@@ -10,6 +10,7 @@ const Card = (props) => {
                 <div className={props.alignment === 'right' ? 'button-left' : 'button-right'}>
                     <div className="button-wrapper">
                         <Link to={props.url} className="button">{props.buttonText}</Link>
+                        {props.children}
                     </div>
                 </div>
             </div>
