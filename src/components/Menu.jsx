@@ -2,14 +2,13 @@ import hamburger from '../images/hamburger.png'
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { useLocation } from 'react-router-dom'
+import { useContext } from 'react'
+import AuthContext from '../context/AuthContext'
+
 
 const Menu = () => {
-    
-    const [authenticated, setAuthenticated] = useState(false)
 
-    useEffect(() => {
-        setAuthenticated(localStorage.getItem('authenticated'))
-    }, [])
+    const {authenticated} = useContext(AuthContext)
 
     let [menuState, setMenuState] = useState(false)
     const toggleMenu = () => {
@@ -38,15 +37,15 @@ const Menu = () => {
                     <Link to='/'>
                         Home
                     </Link>
-                    <Link to='/about'>
-                        About
-                    </Link>
                     <Link to='/contact'>
                         Contact
                     </Link>
                     <Link to='/pages'>
                         Pages
                     </Link>
+                    {!authenticated && <Link to='/login'>
+                        Login
+                    </Link>}
                     {authenticated && <button 
                         className='button' style={{
                             outline: 'none',
@@ -57,7 +56,7 @@ const Menu = () => {
                             localStorage.removeItem('authenticated')
                             window.location.reload(false)
                         }}>
-                        Sign Out</button>}
+                        Log Out</button>}
                 </div>
                 <div className="sidenav-footer">
                     <p>Copyright K.A 2022</p>

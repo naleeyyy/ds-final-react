@@ -1,14 +1,16 @@
 import Loading from "./Loading"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import Card from "./Card"
 import $ from 'jquery'
 import { Link, useNavigate } from "react-router-dom"
+import AuthContext from "../context/AuthContext"
 
 const Pages = () => {
     
     const [pages, setPages] = useState([])
     const [loading, setLoading] = useState(true)
-    const [authenticated, setAuthenticated] = useState(false)
+    const {authenticated} = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const buttonStyle = {
         outline: 'none',
@@ -37,10 +39,6 @@ const Pages = () => {
             })
     }, [])
     
-    useEffect(() => {
-        setAuthenticated(localStorage.getItem('authenticated'))
-    }, [])
-
     const handleDelete = (e) => {
         e.preventDefault()
         const form = $(e.target)
@@ -54,8 +52,6 @@ const Pages = () => {
             }
         })
     }
-
-    let navigate = useNavigate()
 
     const handleEdit = (id) => {
         navigate(`/edit/${id}`)
@@ -73,7 +69,7 @@ const Pages = () => {
                 transform: "translate(-50%, -10%)"
             }}
             >
-                {authenticated && <Link to='/admin' className="button" style={{marignBottom: "2rem"}}>Add page</Link>}
+                {authenticated && <Link to='/add' className="button" style={{marignBottom: "2rem"}}>Add page</Link>}
                 {pages.map(({title, text, ID}) => {
                     return <Card 
                         alignment='left' 
@@ -83,7 +79,8 @@ const Pages = () => {
                         url={`/blogPage/${ID}`}
                         style={{
                             marginBottom: "2rem",
-                        }}                
+                        }}
+                        key={ID}
                     >
                         {authenticated && <><form action="http://localhost:8000/delete.php" method="POST" onSubmit={(e) => handleDelete(e)}>
                             <input type="hidden" name="delete" value={ID}/>

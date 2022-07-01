@@ -2,7 +2,9 @@ import { useEffect, useState } from "react"
 import $ from 'jquery'
 import AnimatedPage from "./AnimatedPage"
 import Loading from "./Loading"
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate, useParams, Navigate } from "react-router-dom"
+import { useContext } from "react"
+import AuthContext from "../context/AuthContext"
 
 const Edit = () => {
     
@@ -13,6 +15,9 @@ const Edit = () => {
     
     const params = useParams()
     const navigate = useNavigate()
+
+    const {authenticated} = useContext(AuthContext)
+    console.log(authenticated)
 
     useEffect(() => {
         $.ajax({
@@ -44,8 +49,7 @@ const Edit = () => {
     }
 
 
-    if (!loading) {
-
+    if (!loading && authenticated) {
         return (
             <AnimatedPage>
                     <form
@@ -72,9 +76,13 @@ const Edit = () => {
                             border: 'none',
                             cursor: 'pointer',
                         }}>Save Edit</button>
-
                     </form>
                 </AnimatedPage>
+        )
+    }
+    else if (!authenticated && !loading) {
+        return (
+            <Navigate to={'/login'}/>
         )
     }
     else {

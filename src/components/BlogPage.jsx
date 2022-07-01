@@ -18,7 +18,6 @@ const BlogPage = (props) => {
             data: `ID=${params.id}`,
             success(data) {
                 let page = JSON.parse(data)[0]
-                console.log(data)
                 setTitle(page.title)
                 setText(page.text)
                 setLoading(false)

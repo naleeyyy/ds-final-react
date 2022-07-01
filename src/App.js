@@ -2,8 +2,9 @@ import './App.css';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import React, { useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Route, Routes } from 'react-router-dom';
-import { Menu, About, Contact, Admin, Pages, BlogPage, Main, Edit } from './components/exports'
+import { Route, Routes, Navigate } from 'react-router-dom';
+import { Menu, Contact, Pages, BlogPage, Main, Edit, Login, Add } from './components/exports'
+import { AuthProvider } from './context/AuthContext';
 
 const Torus = (props) => {
   
@@ -33,16 +34,19 @@ function App() {
           <ambientLight intensity={0.15}/>
           <Torus />
         </Canvas>
+        <AuthProvider>
         <Menu />
-        <Routes>
-          <Route path='/' element={<Main />} />
-          <Route path='/blogPage/:id' element={<BlogPage />}/>
-          <Route path='/about' element={<About />}/>
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/admin' element={<Admin />} />
-          <Route path='/pages' element={<Pages />} />
-          <Route path='/edit/:id' element={<Edit />} />
-        </Routes>
+          <Routes>
+            <Route path='/' element={<Main />} />
+            <Route path='/blogPage/:id' element={<BlogPage />}/>
+            <Route path='/contact' element={<Contact />} />
+            <Route path='/pages' element={<Pages />} />
+            <Route path='/edit/:id' element={<Edit />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/add' element={<Add />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </AuthProvider>
     </>
   );
 }
